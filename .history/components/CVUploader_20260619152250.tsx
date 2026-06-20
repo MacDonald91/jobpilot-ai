@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+// import { extractPdfText } from "../lib/parser/extractPdfText";
 
 export default function CVUploader() {
   const [file, setFile] =
@@ -15,9 +16,18 @@ export default function CVUploader() {
     if (selectedFile) {
       setFile(selectedFile);
 
-      console.log("FILE SELECTED:");
-      console.log(selectedFile.name);
-      console.log(selectedFile);
+      try {
+        const text =
+          await extractPdfText(selectedFile);
+
+        console.log("PDF TEXT:");
+        console.log(text);
+      } catch (error) {
+        console.error(
+          "PDF extraction failed:",
+          error
+        );
+      }
     }
   };
 

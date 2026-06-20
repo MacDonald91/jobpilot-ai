@@ -38,7 +38,7 @@ export default function MatchCard({
         </ul>
       </div>
 
-      <div className="mb-2">
+      <div>
         <h4 className="font-semibold">
           Missing Skills
         </h4>
@@ -49,36 +49,6 @@ export default function MatchCard({
               ❌ {skill}
             </li>
           ))}
-        </ul>
-      </div>
-
-      <div className="mt-4">
-        <h4 className="font-semibold">
-          Strengths
-        </h4>
-
-        <ul>
-          {match.strengths.map((strength) => (
-            <li key={strength}>
-              💪 {strength}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mt-4">
-        <h4 className="font-semibold">
-          Recommendations
-        </h4>
-
-        <ul>
-          {match.recommendations.map(
-            (recommendation) => (
-              <li key={recommendation}>
-                📚 {recommendation}
-              </li>
-            )
-          )}
         </ul>
       </div>
     </div>
