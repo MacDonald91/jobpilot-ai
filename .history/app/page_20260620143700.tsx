@@ -1,12 +1,9 @@
 "use client";
 
 import { useState } from "react";
-
-import { matchJob } from "../lib/jobs/matchJobs";
-
 import { mockCandidate } from "../data/mockCandidate";
 import { mockJobs } from "../data/mockJobs";
-
+import { mockMatches } from "../data/mockMatches";
 
 import CandidateProfile from "../components/CandidateProfile";
 import JobCard from "../components/JobCard";
@@ -17,15 +14,9 @@ import SoftSkillEditor from "../components/SoftSkillEditor";
 import CertificationEditor from "../components/CertificationEditor";
 import JobTitleEditor from "../components/JobTitleEditor";
 
-
 export default function Home() {
   const [candidate, setCandidate] =
-    useState(mockCandidate);
-
-    const liveMatches = mockJobs.map(
-  (job) => matchJob(candidate, job)
-);
-
+  useState(mockCandidate);
   return (
     <main className="min-h-screen p-8">
       <div className="max-w-5xl mx-auto">
@@ -38,52 +29,23 @@ export default function Home() {
         </p>
 
         <section className="mb-10">
-          <CVUploader />
-        </section>
+  <CVUploader />
+</section>
 
-        <section className="mt-10">
-          <h2 className="text-2xl font-semibold mb-4">
-            Candidate Settings
-          </h2>
+<section className="mt-10">
+  <h2 className="text-2xl font-semibold mb-4">
+    Candidate Settings
+  </h2>
 
-          <SkillEditor
-            skills={candidate.technicalSkills}
-            setSkills={(skills) =>
-              setCandidate({
-                ...candidate,
-                technicalSkills: skills,
-              })
-            }
-          />
+  <SkillEditor />
 
-          <SoftSkillEditor
-  skills={candidate.softSkills}
-  setSkills={(skills) =>
-    setCandidate({
-      ...candidate,
-      softSkills: skills,
-    })
-  }
-/>
+  <SoftSkillEditor />
 
-          <CertificationEditor
-  certifications={candidate.certifications}
-  setCertifications={(
-    certifications
-  ) =>
-    setCandidate({
-      ...candidate,
-      certifications,
-    })
-  }
-/>
+  <CertificationEditor />
+  <JobTitleEditor />
+</section>
 
-          <JobTitleEditor />
-        </section>
-
-        <CandidateProfile
-          candidate={candidate}
-        />
+<CandidateProfile candidate={candidate} />
 
         <section className="mt-10">
           <h2 className="text-2xl font-semibold mb-4">
@@ -102,7 +64,8 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-4">
             Match Results
           </h2>
-    {liveMatches.map((match) => (
+
+          {mockMatches.map((match) => (
             <MatchCard
               key={match.job.id}
               match={match}

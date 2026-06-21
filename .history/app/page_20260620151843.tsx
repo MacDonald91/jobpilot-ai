@@ -56,27 +56,9 @@ export default function Home() {
             }
           />
 
-          <SoftSkillEditor
-  skills={candidate.softSkills}
-  setSkills={(skills) =>
-    setCandidate({
-      ...candidate,
-      softSkills: skills,
-    })
-  }
-/>
+          <SoftSkillEditor />
 
-          <CertificationEditor
-  certifications={candidate.certifications}
-  setCertifications={(
-    certifications
-  ) =>
-    setCandidate({
-      ...candidate,
-      certifications,
-    })
-  }
-/>
+          <CertificationEditor />
 
           <JobTitleEditor />
         </section>

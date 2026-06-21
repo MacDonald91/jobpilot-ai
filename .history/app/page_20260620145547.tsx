@@ -2,11 +2,9 @@
 
 import { useState } from "react";
 
-import { matchJob } from "../lib/jobs/matchJobs";
-
 import { mockCandidate } from "../data/mockCandidate";
 import { mockJobs } from "../data/mockJobs";
-
+import { mockMatches } from "../data/mockMatches";
 
 import CandidateProfile from "../components/CandidateProfile";
 import JobCard from "../components/JobCard";
@@ -17,14 +15,9 @@ import SoftSkillEditor from "../components/SoftSkillEditor";
 import CertificationEditor from "../components/CertificationEditor";
 import JobTitleEditor from "../components/JobTitleEditor";
 
-
 export default function Home() {
   const [candidate, setCandidate] =
     useState(mockCandidate);
-
-    const liveMatches = mockJobs.map(
-  (job) => matchJob(candidate, job)
-);
 
   return (
     <main className="min-h-screen p-8">
@@ -56,27 +49,9 @@ export default function Home() {
             }
           />
 
-          <SoftSkillEditor
-  skills={candidate.softSkills}
-  setSkills={(skills) =>
-    setCandidate({
-      ...candidate,
-      softSkills: skills,
-    })
-  }
-/>
+          <SoftSkillEditor />
 
-          <CertificationEditor
-  certifications={candidate.certifications}
-  setCertifications={(
-    certifications
-  ) =>
-    setCandidate({
-      ...candidate,
-      certifications,
-    })
-  }
-/>
+          <CertificationEditor />
 
           <JobTitleEditor />
         </section>
@@ -102,7 +77,8 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-4">
             Match Results
           </h2>
-    {liveMatches.map((match) => (
+
+          {mockMatches.map((match) => (
             <MatchCard
               key={match.job.id}
               match={match}

@@ -66,17 +66,7 @@ export default function Home() {
   }
 />
 
-          <CertificationEditor
-  certifications={candidate.certifications}
-  setCertifications={(
-    certifications
-  ) =>
-    setCandidate({
-      ...candidate,
-      certifications,
-    })
-  }
-/>
+          <CertificationEditor />
 
           <JobTitleEditor />
         </section>
